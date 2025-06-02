@@ -2,4 +2,4 @@
 export { z } from 'zod';
 
 // MongoDB - NPM
-export { ObjectId } from 'mongodb@6.1.0';
+export { ObjectId } from 'mongodb';
