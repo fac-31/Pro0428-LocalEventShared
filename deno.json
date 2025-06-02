@@ -19,5 +19,9 @@
     "indentWidth": 2,
     "singleQuote": true,
     "proseWrap": "preserve"
+  },
+  "imports": {
+    "mongodb": "npm:mongodb@^6.16.0",
+    "zod": "npm:zod@^3.25.48"
   }
 }
