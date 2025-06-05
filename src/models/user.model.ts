@@ -1,6 +1,7 @@
 import { z } from '../../deps.ts';
 import { ObjectId } from '../../deps.ts';
 
+// --- SCHEMAS ---
 export const UserSignUpSchema = z.object({
   name_first: z.string().optional(),
   name_last: z.string().optional(),
@@ -9,13 +10,20 @@ export const UserSignUpSchema = z.object({
   password: z.string().min(6).max(100), // plain-text
 });
 
-export type UserSignUpInput = z.infer<typeof UserSignUpSchema>;
-
 export const UserLogInSchema = z.object({
   username: z.string().min(3).max(20),
   password: z.string().min(6).max(100), // plain-text
 });
 
+export const UserUpdateSchema = z.object({
+  name_first: z.string().optional(),
+  name_last: z.string().optional(),
+  password: z.string().min(6).max(100).optional(),
+});
+
+// --- TYPES ---
+export type UserUpdateSchema = z.infer<typeof UserUpdateSchema>;
+export type UserSignUpInput = z.infer<typeof UserSignUpSchema>;
 export type UserLogInInput = z.infer<typeof UserLogInSchema>;
 
 export interface UserInDB {
@@ -32,6 +40,7 @@ export interface UserInDB {
 export type NewUser = Omit<UserInDB, '_id'>;
 export type SafeUser = Omit<UserInDB, 'password'>;
 
+// -- Type helper function
 export const toSafeUser = (user: UserInDB): SafeUser => {
   const { password: _password, ...safeUser } = user;
   return safeUser;
