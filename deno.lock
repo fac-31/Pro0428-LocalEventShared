@@ -1,6 +1,7 @@
 {
   "version": "5",
   "specifiers": {
+    "npm:@types/node@*": "22.15.15",
     "npm:mongodb@6.1.0": "6.1.0",
     "npm:mongodb@^6.16.0": "6.16.0",
     "npm:zod@*": "3.25.23",

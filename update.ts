@@ -1,11 +1,12 @@
-import { execSync } from "node:child_process";
+import process from 'node:process';
+import { execSync } from 'node:child_process';
 
-await RunGitCommand("checkout main");
-await RunGitCommand("reset --hard origin");
-await RunGitCommand("clean -fd");
-await RunGitCommand("checkout " + (process.argv[2] ? process.argv[2] : "main"));
-await RunGitCommand("pull");
+RunGitCommand('checkout main');
+RunGitCommand('reset --hard origin');
+RunGitCommand('clean -fd');
+RunGitCommand('checkout ' + (process.argv[2] ? process.argv[2] : 'main'));
+RunGitCommand('pull');
 
-async function RunGitCommand(arg: string) {
-  execSync("git " + arg, { stdio: "inherit" });
+function RunGitCommand(arg: string) {
+  execSync('git ' + arg, { stdio: 'inherit' });
 }
