@@ -8,5 +8,6 @@
 
 ### ✅ Checklist
 
-- [ ] Lint & formatting passes (`npm run lint / run lint:fix`)
-- [ ] No type errors (`npm run fmt`)
+- [ ] Lint passes (`deno task lint`)
+- [ ] Code is formatted (`deno task fmt`)
+- [ ] No type errors (`deno check .`)
