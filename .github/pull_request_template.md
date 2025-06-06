@@ -8,6 +8,6 @@
 
 ### ✅ Checklist
 
-- [ ] Lint passes (`deno task lint`)
-- [ ] Code is formatted (`deno task fmt`)
-- [ ] No type errors (`deno check .`)
+- [] Lint passes (`deno task lint`)
+- [] Code is formatted (`deno task fmt`)
+- [] No type errors (`deno check .`)
