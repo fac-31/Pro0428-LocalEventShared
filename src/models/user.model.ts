@@ -15,11 +15,7 @@ export const UserLogInSchema = z.object({
   password: z.string().min(6).max(100), // plain-text
 });
 
-export const UserUpdateSchema = z.object({
-  name_first: z.string().optional(),
-  name_last: z.string().optional(),
-  password: z.string().min(6).max(100).optional(),
-});
+export const UserUpdateSchema = UserSignUpSchema.partial();
 
 // --- TYPES ---
 export type UserUpdateSchema = z.infer<typeof UserUpdateSchema>;
