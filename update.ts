@@ -1,12 +1,25 @@
-import process from 'node:process';
-import { execSync } from 'node:child_process';
+// Get command-line arguments (like process.argv[2])
+const branch = Deno.args[0] ?? 'main';
 
-RunGitCommand('checkout main');
-RunGitCommand('reset --hard origin');
-RunGitCommand('clean -fd');
-RunGitCommand('checkout ' + (process.argv[2] ? process.argv[2] : 'main'));
-RunGitCommand('pull');
+// Helper to run git commands
+async function runGitCommand(args: string[]) {
+  const command = new Deno.Command('git', {
+    args,
+    stdin: 'inherit',
+    stdout: 'inherit',
+    stderr: 'inherit',
+  });
 
-function RunGitCommand(arg: string) {
-  execSync('git ' + arg, { stdio: 'inherit' });
+  const { code } = await command.output();
+  if (code !== 0) {
+    console.error(`git ${args.join(' ')} failed`);
+    Deno.exit(code);
+  }
 }
+
+// Sequence of git commands
+await runGitCommand(['checkout', 'main']);
+await runGitCommand(['reset', '--hard', 'origin']);
+await runGitCommand(['clean', '-fd']);
+await runGitCommand(['checkout', branch]);
+await runGitCommand(['pull']);
