@@ -1,4 +1,4 @@
-import { z } from '../../deps.ts';
+import { ObjectId, z } from '../../deps.ts';
 
 const eventModeEnum = z.enum(['music', 'charity', 'sports', 'other']);
 
@@ -22,9 +22,10 @@ export const eventsArraySchema = z.object({
   otherEvents: z.array(eventSchema),
 });
 
-export type Event = z.infer<typeof eventSchema>;
+export type Event = z.infer<typeof eventSchema> & { _id?: ObjectId };
 
 export type FullEvent = {
+  _id?: ObjectId;
   mode: EventMode;
   name: string;
   normalizedName: string;
