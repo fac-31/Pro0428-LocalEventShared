@@ -9,7 +9,7 @@ export type GetAllEventsSuccessResponse = Event[];
 
 export type GetAllEventsErrorResponse = {
   error: string;
-  details: ZodFormattedError<{ mode?: EventMode}> | undefined;
+  details: ZodFormattedError<{ mode?: EventMode }> | undefined;
 };
 
 export type GetAllEventsResponse =
